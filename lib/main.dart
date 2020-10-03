@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:FotoApp/image.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -55,8 +56,12 @@ class _MyAppState extends State<MyApp> {
                   String imgPath = wallpapersList[index].get("url");
                   return Card(
                     child: InkWell(
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ImagePath(imgPath))),
                       child: Hero(
-                          tag: index,
+                          tag: imgPath,
                           child: FadeInImage(
                             width: MediaQuery.of(context).size.width,
                             placeholder: AssetImage("assets/loading.gif"),

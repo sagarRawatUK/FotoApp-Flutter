@@ -31,6 +31,7 @@ dependencies:
   firebase_core:
   cloud_firestore:
   flutter_staggered_grid_view: 
+  flutter_downloader:
 
 dev_dependencies:
   flutter_test:
