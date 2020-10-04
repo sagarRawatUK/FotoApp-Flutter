@@ -5,5 +5,5 @@ A Wallpaper App made with Dart and Flutter SDK using the Google Firebase and Clo
 
 # Screenshots
 
-![WhatsApp Image 2020-10-04 at 9 52 04 AM](https://user-images.githubusercontent.com/60035156/95006965-b4199a00-0627-11eb-85f2-f3600e2bd2f9.jpeg)
-![WhatsApp Image 2020-10-04 at 9 52 04 AM (1)](https://user-images.githubusercontent.com/60035156/95006979-d0b5d200-0627-11eb-8a66-350fd8392fc1.jpeg)
+![WhatsApp Image 2020-10-04 at 9 52 04 AM (1)](https://user-images.githubusercontent.com/60035156/95007129-c268b580-0629-11eb-8c50-5243399debe4.jpeg)
+![WhatsApp Image 2020-10-04 at 9 52 04 AM](https://user-images.githubusercontent.com/60035156/95007130-c4327900-0629-11eb-8265-c66ba9d76891.jpeg)
