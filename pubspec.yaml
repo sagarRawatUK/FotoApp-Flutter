@@ -32,6 +32,8 @@ dependencies:
   cloud_firestore:
   flutter_staggered_grid_view: 
   flutter_downloader:
+  path_provider:
+  permission_handler:
 
 dev_dependencies:
   flutter_test:
