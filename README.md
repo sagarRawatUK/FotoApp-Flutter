@@ -1,16 +1,9 @@
 # FotoApp
 
-A new Flutter project.
+A Wallpaper App made with Dart and Flutter SDK using the Google Firebase and Cloud Firestore.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+# Screenshots
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![WhatsApp Image 2020-10-04 at 9 52 04 AM](https://user-images.githubusercontent.com/60035156/95007130-c4327900-0629-11eb-8265-c66ba9d76891.jpeg)
+![WhatsApp Image 2020-10-04 at 9 52 04 AM (1)](https://user-images.githubusercontent.com/60035156/95007129-c268b580-0629-11eb-8c50-5243399debe4.jpeg)
