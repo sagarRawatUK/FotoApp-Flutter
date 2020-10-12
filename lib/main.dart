@@ -6,7 +6,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 
-final Color myColor = Colors.blue;
+final Color myColor = Color(0xff222f3e);
+final Color myColor2 = Color(0xff1d2d50);
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,11 +48,19 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    var tabindex = 0;
+    void incrementTab(index) {
+      setState(() {
+        tabindex = index;
+      });
+    }
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: Text("FotoApp"),
+          backgroundColor: myColor,
         ),
         body: wallpapersList != null
             ? StaggeredGridView.countBuilder(
@@ -83,6 +92,25 @@ class _MyAppState extends State<MyApp> {
             : Center(
                 child: CircularProgressIndicator(),
               ),
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: myColor,
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.grey,
+          currentIndex: tabindex,
+          type: BottomNavigationBarType.shifting,
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.image), title: Text("Wallpapers")),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.view_list), title: Text("Categories")),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.info), title: Text("About"))
+          ],
+          onTap: (index) {
+            incrementTab(index);
+          },
+        ),
+        backgroundColor: myColor2,
       ),
     );
   }

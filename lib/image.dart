@@ -1,14 +1,45 @@
+import 'dart:ui';
+import 'dart:async';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:FotoApp/main.dart';
+import 'package:permission_handler/permission_handler.dart';
 
-class ImagePath extends StatelessWidget {
+class ImagePath extends StatefulWidget {
   final String imgPath;
   ImagePath(this.imgPath);
-  Future<String> get localPath async {
-    final directory = await getApplicationDocumentsDirectory();
-    print(directory.path);
+
+  @override
+  _ImagePathState createState() => _ImagePathState();
+}
+
+class _ImagePathState extends State<ImagePath> {
+  String localPath;
+
+  Future<String> get localpath async {
+    final result = await Permission.storage.request();
+    if (result == PermissionStatus.granted) {
+      // final directory = await getApplicationDocumentsDirectory();
+      // print(directory.path);
+      // return directory.path;
+      final localPath =
+          (await findLocalPath()) + Platform.pathSeparator + 'Download';
+      final savedDir = Directory(localPath);
+      bool hasExisted = await savedDir.exists();
+      if (!hasExisted) {
+        savedDir.create();
+      }
+      return localPath;
+    } else
+      return null;
+  }
+
+  Future<String> findLocalPath() async {
+    final directory = Platform.isAndroid
+        ? await getExternalStorageDirectory()
+        : await getApplicationDocumentsDirectory();
     return directory.path;
   }
 
@@ -20,18 +51,18 @@ class ImagePath extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.close),
           onPressed: () => Navigator.of(context).pop(),
-          color: Colors.black,
+          color: Colors.white,
         ),
         actions: [
           IconButton(
-              color: Colors.black,
+              color: Colors.white,
               icon: Icon(Icons.file_download),
               onPressed: () async => DownloadTask(
                   taskId: await FlutterDownloader.enqueue(
-                      url: imgPath,
-                      savedDir: await localPath,
-                      openFileFromNotification: true,
-                      showNotification: true)))
+                      url: widget.imgPath,
+                      savedDir: await localpath,
+                      showNotification: true,
+                      openFileFromNotification: true)))
         ],
       ),
       body: SizedBox.expand(
@@ -40,12 +71,14 @@ class ImagePath extends StatelessWidget {
             children: [
               Align(
                 alignment: Alignment.center,
-                child: Hero(tag: imgPath, child: Image.network(imgPath)),
+                child: Hero(
+                    tag: widget.imgPath, child: Image.network(widget.imgPath)),
               ),
             ],
           ),
         ),
       ),
+      backgroundColor: myColor2,
     );
   }
 }
